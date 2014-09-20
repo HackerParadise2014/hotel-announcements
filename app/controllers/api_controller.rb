@@ -10,7 +10,7 @@ class ApiController < ApplicationController
 	  token: 'PmeYLdrdKKyRiVy0B5ckQXum',
 	  username: 'marc'
 	)
-  Slack::Post.post "Domo arigato.", '#hotel-announcements'
+  Slack::Post.post "#{params[:text]}", '#hotel-announcements'
 	render text: params
   end
 
