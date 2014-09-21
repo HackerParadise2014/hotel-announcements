@@ -1,12 +1,12 @@
 == README
 
-The purpose of this application is to allow the staff at the El Sueno Tropical hotel to send announcements to slack, so that all guests get immediately notified. However, the hotel staff does not use Slack, so this provides an SMS based interface to slack that they can use, via a local Costa Rican number.
+The purpose of this application is to allow the staff at the El Sueno Tropical hotel to send announcements to slack via SMS, so that all guests get immediately notified. 
 
 This program is the callback URL for inbound text messages sent to this phone number:
 
-+506-770-9990
++506-7207-9990
 
-* The parameters of the inbound message are sent as GET parameters as detailed in [this page on nexmo docs](https://docs.nexmo.com/index.php/sms-api/handle-inbound-message).
+* The parameters of the inbound message are sent to /api/nexmo_receiver as GET parameters as detailed in this page on nexmo docs: https://docs.nexmo.com/index.php/sms-api/handle-inbound-message.
 
 Future Enhancements
 ----------
