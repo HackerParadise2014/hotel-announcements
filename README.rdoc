@@ -1,28 +1,14 @@
 == README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+The purpose of this application is to allow the staff at the El Sueno Tropical hotel to send announcements to slack, so that all guests get immediately notified. However, the hotel staff does not use Slack, so this provides an SMS based interface to slack that they can use, via a local Costa Rican number.
 
-Things you may want to cover:
+This program is the callback URL for inbound text messages sent to this phone number:
 
-* Ruby version
++506-770-9990
 
-* System dependencies
+* The parameters of the inbound message are sent as GET parameters as detailed in [this page on nexmo docs](https://docs.nexmo.com/index.php/sms-api/handle-inbound-message).
 
-* Configuration
+Future Enhancements
+----------
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+* We could make the SMS two-way so that the sender will receive all messages posted to the slack channel for up to 2 minutes after sending an announcement.
