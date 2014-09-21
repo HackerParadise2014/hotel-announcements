@@ -16,7 +16,11 @@ class ApiController < ApplicationController
  require 'slack-notifier'
 
 notifier = Slack::Notifier.new "hackerparadise2014", "#{ENV['SLACK_TOKEN']}"
-notifier.ping "<!channel> announcement from hotel: #{params[:text]}", channel: "#general", icon_url: 'http://cdn.graphicsfactory.com/clip-art/image_files/image/7/708587-dancing020yy.gif'
+
+
+notifier.username = 'El Sueno Tropical'
+
+notifier.ping "<!channel> #{params[:text]}", channel: "#general", icon_url: 'http://cdn.graphicsfactory.com/clip-art/image_files/image/7/708587-dancing020yy.gif'
 
 
 	render text: params
