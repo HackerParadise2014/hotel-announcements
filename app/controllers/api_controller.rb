@@ -2,6 +2,8 @@ class ApiController < ApplicationController
 
   def nexmo_receiver
 
+  	puts 'start nexmo_receiver'
+  	
 	require 'slack-notifier'
 
 	# production env notifications
@@ -19,6 +21,8 @@ class ApiController < ApplicationController
 
 	render text: "end of nexmo_receiver"
 
+
+
   end
 
   def slack_receiver
@@ -27,10 +31,12 @@ class ApiController < ApplicationController
   	# the message content will be in params[:text]
 
   	# we need to take this text and sent it via nexmo to the number of the most recent sender
+
+  	puts 'start slack receiver'
+
   	s = Sender.last
   	most_recent_num = s.phone
 
-  	puts 'start slack receiver'
   	puts params
 
   	if(!s.sent)
