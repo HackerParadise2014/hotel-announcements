@@ -3,7 +3,7 @@ class ApiController < ApplicationController
   def nexmo_receiver
 
   	puts 'start nexmo_receiver'
-  	
+
 	require 'slack-notifier'
 
 	# production env notifications
@@ -36,7 +36,7 @@ class ApiController < ApplicationController
 
   	s = Sender.last
   	most_recent_num = s.phone
-
+  	puts "params are: "
   	puts params
 
   	if(!s.sent)
