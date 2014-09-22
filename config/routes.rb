@@ -4,6 +4,7 @@ Rails.application.routes.draw do
     collection do
       get :nexmo_receiver
       get :slack_receiver
+      post :slack_receiver
     end
   end
   

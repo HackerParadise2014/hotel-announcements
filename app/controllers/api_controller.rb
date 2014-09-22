@@ -1,5 +1,8 @@
 class ApiController < ApplicationController
 
+# do not request authenticity token for slack_receiver
+protect_from_forgery except: :slack_receiver
+
   def nexmo_receiver
 
   	puts 'start nexmo_receiver'
@@ -46,7 +49,9 @@ class ApiController < ApplicationController
 
 	nexmo = Nexmo::Client.new(key: ENV['NEXMO_KEY'], secret: ENV['NEXMO_SECRET'])
 
-	nexmo.send_message(from: ENV['NEXMO_FROM_NUMBER'], to: most_recent_num, text: params[:text])
+	if(params[:text])
+		nexmo.send_message(from: ENV['NEXMO_FROM_NUMBER'], to: most_recent_num, text: params[:text])
+	end
 
 	# and also update the Sender to indicate that it received a reply, so we don't send any more to them.
 	s.sent = true
