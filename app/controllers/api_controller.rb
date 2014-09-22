@@ -14,7 +14,7 @@ protect_from_forgery except: :slack_receiver
 
 	notifier.username = 'El Sueno Tropical'
 
-	response = notifier.ping "<!channel> #{params[:text]}", channel: "#{ENV['SLACK_CHANNEL']}", icon_url: 'http://cdn.graphicsfactory.com/clip-art/image_files/image/7/708587-dancing020yy.gif'
+	response = notifier.ping "<!channel> #{params[:text]} [to reply via SMS include @sueno in your message]", channel: "#{ENV['SLACK_CHANNEL']}", icon_url: 'http://cdn.graphicsfactory.com/clip-art/image_files/image/7/708587-dancing020yy.gif'
 
 	# we need to store the number of the most recent sender
 	s = Sender.new
