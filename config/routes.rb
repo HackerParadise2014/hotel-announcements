@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   resources :api do
     collection do
       get :nexmo_receiver
+      get :slack_receiver
     end
   end
   
