@@ -31,31 +31,27 @@ class ApiController < ApplicationController
   	# the message content will be in params[:text]
 
   	# we need to take this text and sent it via nexmo to the number of the most recent sender
+  	# note: according to the slack integration, this url will only be called if the message contains the keyword "sueno"
 
   	puts 'start slack receiver'
 
   	s = Sender.last
   	most_recent_num = s.phone
-  	puts "params are: "
-  	puts params
 
-  	if(!s.sent)
-  		# send the message and update the record
+  	puts "params are: #{params}"
 
-  		puts 'do the sending'
+	puts 'do the sending'
 
-	  	require 'nexmo'
+  	require 'nexmo'
 
-		nexmo = Nexmo::Client.new(key: ENV['NEXMO_KEY'], secret: ENV['NEXMO_SECRET'])
+	nexmo = Nexmo::Client.new(key: ENV['NEXMO_KEY'], secret: ENV['NEXMO_SECRET'])
 
-		nexmo.send_message(from: ENV['NEXMO_FROM_NUMBER'], to: most_recent_num, text: params[:text])
+	nexmo.send_message(from: ENV['NEXMO_FROM_NUMBER'], to: most_recent_num, text: params[:text])
 
-		# and also update the Sender to indicate that it received a reply, so we don't send any more to them.
-		s.sent = true
-		s.save
-	else
-		puts 'do NOT send'
-	end
+	# and also update the Sender to indicate that it received a reply, so we don't send any more to them.
+	s.sent = true
+	s.save
+	
 
   	render text: params
 
