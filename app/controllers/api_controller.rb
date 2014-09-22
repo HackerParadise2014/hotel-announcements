@@ -51,7 +51,7 @@ class ApiController < ApplicationController
 		puts 'do NOT send'
 	end
 
-  	render text: "end of slack_receiver" + params
+  	render text: params
 
   end
 
