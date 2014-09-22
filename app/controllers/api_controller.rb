@@ -41,10 +41,6 @@ protect_from_forgery except: :slack_receiver
   	s = Sender.last
   	most_recent_num = s.phone
 
-  	puts "params are: #{params}"
-
-	puts 'do the sending'
-
   	require 'nexmo'
 
 	nexmo = Nexmo::Client.new(key: ENV['NEXMO_KEY'], secret: ENV['NEXMO_SECRET'])
@@ -52,12 +48,7 @@ protect_from_forgery except: :slack_receiver
 	if(params[:text])
 		nexmo.send_message(from: ENV['NEXMO_FROM_NUMBER'], to: most_recent_num, text: params[:text])
 	end
-
-	# and also update the Sender to indicate that it received a reply, so we don't send any more to them.
-	s.sent = true
-	s.save
 	
-
   	render text: params
 
   end

@@ -8,8 +8,10 @@ This program is the callback URL for inbound text messages sent to this phone nu
 
 * The parameters of the inbound message are sent to /api/nexmo_receiver as GET parameters as detailed in this page on nexmo docs: https://docs.nexmo.com/index.php/sms-api/handle-inbound-message.
 
+* Also, we use a Slack outbound webhook so that any messages including the keyword @sueno are sent via SMS to the most previous sender.
+
 Future Enhancements
 ----------
 
-* We could make the SMS two-way so that the sender will receive all messages posted to the slack channel for up to 2 minutes after sending an announcement.
+* The message sent out via SMS seems to come from a US-based number instead of the costa-rica number.. at least with testing on Troy's phone. Not sure why that is?
 
