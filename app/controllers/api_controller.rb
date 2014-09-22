@@ -30,12 +30,8 @@ class ApiController < ApplicationController
   	s = Sender.last
   	most_recent_num = s.phone
 
-  	#for dev only
-  	#most_recent_num = '19142980587'
-
-  	#from_number = "#{ENV['NEXMO_FROM_NUMBER']}"
-
-  	# now we need to send params[text] to most_recent_num using nexmo
+  	puts 'start slack receiver'
+  	puts params
 
   	if(!s.sent)
   		# send the message and update the record
@@ -55,7 +51,7 @@ class ApiController < ApplicationController
 		puts 'do NOT send'
 	end
 
-  	render text: "end of slack_receiver"
+  	render text: "end of slack_receiver" + params
 
   end
 
